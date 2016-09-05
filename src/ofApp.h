@@ -9,20 +9,21 @@
 #define SENDER_PORT 9001
 #define HOST "localhost"
 
-class ofApp : public ofBaseApp{
-
-	public:
-		void setup();
-		void update();
-		void draw();
-
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
+class ofApp : public ofBaseApp {
+public:
+    void setup();
+    void setupMonitor();
+    void update();
+    void draw();
+    void drawMonitor(ofEventArgs& args);
     
-        string getArg(int index , ofxOscMessage m);
-        void sendOscMessage(string str);
+    void keyPressed(int key);
+    void keyReleased(int key);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+    
+    string getArg(int index, ofxOscMessage m);
+    void sendOscMessage(string str);
     
     ofxOscReceiver receiver;
     ofxOscSender sender;
@@ -37,11 +38,12 @@ class ofApp : public ofBaseApp{
     string send_address_manual;
     vector<string> r_args;
     vector<string> tag;
+    vector<string> draw_args;
     int r_argNums;
     bool bReceive;
     string r_address;
     string r_remoteIp;
-
+    
     /*----send_param----*/
     string s_address;
     string s_remoteIp;
@@ -56,4 +58,8 @@ class ofApp : public ofBaseApp{
     string arg_1;
     bool send_bang;
     
+    /*-----subMonitor----*/
+    vector<string> r_msg;
+    int line_num;
+    int line_index;
 };
